@@ -1,0 +1,41 @@
+# zhangxiaowen
+# 购物车结算
+
+item_list=[
+    ("棒棒糖",1.5),
+    ("mac pro 13.3",12888),
+    ("watch",2880),
+    ("redmi 9",999),
+    ("coffee",33)
+]
+shopping_list=[]
+salary=input("请输入你的工资:")
+if salary.isdigit():
+    salary=int(salary)
+    while True:
+       for index,item in enumerate(item_list):
+          print(index,item)
+       user_choice=input("请输入你选择的商品---》")
+       if user_choice.isdigit():
+            user_choice=int(user_choice)
+            if user_choice < len(item_list) and user_choice >=0:
+                p_item=item_list[user_choice]
+                if p_item[1]<=salary:
+                    shopping_list.append(p_item)
+                    salary-=p_item[1]
+                    print("把%s商品加入购物车，还剩%s工资"%(p_item,salary))
+                else:
+                    print("你的工资不够只有%s"%(salary))
+                    exit()
+            else:
+                print("您输入的商品不存在,请重新输入------》")
+       elif user_choice =='q':
+                print("exit----》")
+                for p in shopping_list:
+                    print(p)
+                print("你购买的商品有%s,剩余的钱有%s"%(shopping_list,salary))
+                exit()
+       else:
+                print("输入错误")
+
+
