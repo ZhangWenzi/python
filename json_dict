@@ -1,0 +1,46 @@
+# python
+#python 学习
+# 对象转json ----------- json.dumps()
+# json转对象 ----------- json.loads()
+
+import json #导入json包
+
+#dict转json，使用dumps
+d = dict(name='Bob', age=20, score=88,reward=["三好学生","优秀团干","最佳辩手"])
+json_str=json.dumps(d,ensure_ascii=False)
+print(json_str)
+
+#json转dict，使用loads
+json_str='{"name": "Bob", "age": 20, "score": 88, "reward": ["三好学生", "优秀团干", "最佳辩手"]}'
+d=json.loads(json_str)
+print(type(d))
+print(d)
+
+
+#实体类转json
+class Student(object):
+    def __init__(self,name,age,score,reward):
+        self.name=name
+        self.age=age
+        self.score=score
+        self.reward=reward
+
+d=Student('Bob',20,88,["三好学生", "优秀团干", "最佳辩手"])
+print(json.dumps(obj=d.__dict__,ensure_ascii=False))
+
+#json转实体类
+class Student(object):
+    def __init__(self,name,age,score,reward):
+        self.name=name
+        self.age=age
+        self.score=score
+        self.reward=reward
+
+def dict2_student(d):
+    return Student(d['name'],d['age'],d['score'],d['reward'])
+
+json_str='{"name": "Bob", "age": 20, "score": 88, "reward": ["三好学生", "优秀团干", "最佳辩手"]}'
+student=json.loads(json_str,object_hook=dict2_student)
+print(type(student))
+print(student.name)
+
