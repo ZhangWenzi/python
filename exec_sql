@@ -1,0 +1,33 @@
+# python
+# python 学习
+
+import pymysql
+def exec_sql(sql):
+    conn=pymysql.connect(host='192.168.0.7',port=3306,user='root',passwd='dev@110',database='mandofin_test')
+    #得到一个可以执行SQL语句的光标对象
+    cursor=conn.cursor()
+
+    try:
+        # 执行SQL语句
+        cursor.execute(sql)
+        # 使用 fetchone() 方法获取单条数据.
+        # result = cursor.fetchone()
+
+        # 使用 fetchall() 方法获取所有数据.
+        result=cursor.fetchall()
+
+        name_list = []
+        for x in result:
+            name_list.append(x[7])
+        print(name_list)
+
+    except Exception as e:
+        print(e)
+
+    finally:
+        # 关闭光标对象
+        cursor.close()
+        # 关闭数据库连接
+        conn.close()
+
+exec_sql('select * from user ')
