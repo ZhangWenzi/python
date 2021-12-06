@@ -1,0 +1,141 @@
+# python
+python import requests
+
+base_url='http://w01-api.qa03.ztyc.com/ediqm'
+path='/api/edi/qimen/in?method=deliveryorder_create&timestamp=2018-11-21 00:00:00&format=xml&app_key=&v=1.0&sign&sign_method=md5&customerId=CS0539'
+
+# def __call__(self):
+
+
+data ='<?xml version="1.0" encoding="utf-8"?>'\
+'<request>'\
+    '<deliveryOrder>'\
+      '<deliveryOrderCode>2021111916060001</deliveryOrderCode>'\
+      '<orderType>JYCK</orderType>'\
+      '<warehouseCode>ZTYCHSC</warehouseCode>'\
+      '<orderFlag/>'\
+      '<sourcePlatformCode>OTHER</sourcePlatformCode>'\
+      '<createTime>2020-11-19 16:06:55</createTime>'\
+      '<placeOrderTime>2020-11-19 16:06:55</placeOrderTime>'\
+      '<payTime>2020-11-19 16:06:55</payTime>'\
+      '<operateTime>2020-11-19 16:06:55</operateTime>'\
+      '<shopNick>jd_special2014</shopNick>'\
+      '<buyerNick>MOB134****9140</buyerNick>'\
+      '<totalAmount>0</totalAmount>'\
+      '<gotAmount>0</gotAmount>'\
+      '<freight>0</freight>'\
+      '<logisticsCode>ZTO</logisticsCode>'\
+      '<invoiceFlag>N</invoiceFlag>'\
+      '<buyerMessage/>'\
+      '<arAmount>0</arAmount>'\
+      '<serviceFee>0</serviceFee>'\
+      '<sellerMessage>唯品中通速递</sellerMessage>'\
+      '<remark/>'\
+      '<expressCode>2021111916060001</expressCode>'\
+      '<senderInfo>'\
+        '<name/>'\
+        '<mobile/>'\
+        '<province/>'\
+        '<city>无</city>'\
+        '<area>无</area>'\
+        '<town>鼓楼街道22</town>'\
+        '<detailAddress/>'\
+      '</senderInfo>'\
+      '<receiverInfo>'\
+        '<name>张园</name>'\
+        '<idType/>'\
+        '<idNumber/>'\
+        '<mobile>13912987863</mobile>'\
+        '<tel/>'\
+        '<province>浙江省</province>'\
+        '<city>宁波市</city>'\
+        '<area>海曙区</area>'\
+        '<town>鼓楼街道</town>'\
+        '<zipCode>315000</zipCode>'\
+        '<detailAddress>浙江省 宁波市 海曙区 鼓楼街道法院巷114号49</detailAddress>'\
+      '</receiverInfo>'\
+      '<deliveryRequirements>'\
+        '<deliveryType>PTPS</deliveryType>'\
+        '<scheduleDay/>'\
+      '</deliveryRequirements>'\
+      '<extendProps>'\
+        '<key1>0</key1>'\
+        '<tax/>'\
+        '<pay_id/>'\
+        '<pay_account/>'\
+        '<buyer_name/>'\
+        '<id_card_type/>'\
+        '<id_card/>'\
+        '<buyer_phone/>'\
+        '<receiver_id_card/>'\
+        '<pay_ent_name/>'\
+        '<pay_ent_no/>'\
+        '<hz_purchaser_id/>'\
+        '<paid/>'\
+        '<insure_amount/>'\
+        '<key2>1</key2>'\
+        '<trade_flag>0</trade_flag>'\
+        '<erpTradeNo>JY201909240111</erpTradeNo>'\
+        '<trade_type>1</trade_type>'\
+        '<send_type/>'\
+        '<trade_shop_tel/>'\
+        '<printRemark/>'\
+        '<api_cod_amount/>'\
+        '<flag_id>0</flag_id>'\
+        '<isPaid>1</isPaid>'\
+        '<frontWarehouseCode>ZTYCHSC</frontWarehouseCode>'\
+      '</extendProps>' \
+    '</deliveryOrder>'\
+    '<extendProps>'\
+     '<vendorID>14151</vendorID>'\
+     '<trade_mask>jitx</trade_mask>'\
+     '<warehouse_remark/>'\
+    '</extendProps>'\
+    '<orderLines>'\
+     '<orderLine>'\
+     '<outBizCode></outBizCode>'\
+     '<orderLineNo></orderLineNo>'\
+     '<ownerCode>CS0539</ownerCode>'\
+     '<itemCode>zhang0001</itemCode>'\
+     '<itemId></itemId>'\
+     '<itemName></itemName>'\
+     '<planQty>3</planQty>'\
+     '<purchasePrice></purchasePrice>'\
+     '<retailPrice></retailPrice>'\
+     '<inventoryType>ZP</inventoryType>'\
+     '<productDate></productDate>'\
+     '<expireDate></expireDate>'\
+     '<produceCode></produceCode>'\
+     '<batchCode></batchCode>'\
+     '<extendProps>'\
+     '<key1></key1>'\
+     '<key2></key2>'\
+     '</extendProps>'\
+   '</orderLine>'\
+   '<orderLine>'\
+      '<outBizCode></outBizCode>'\
+      '<orderLineNo></orderLineNo>'\
+      '<ownerCode>CS0539</ownerCode>'\
+      '<itemCode>zhang0002</itemCode>'\
+      '<itemId></itemId>'\
+      '<itemName></itemName>'\
+      '<planQty>3</planQty>'\
+      '<purchasePrice></purchasePrice>'\
+      '<retailPrice></retailPrice>'\
+      '<inventoryType>ZP</inventoryType>'\
+      '<productDate></productDate>'\
+      '<expireDate></expireDate>'\
+      '<produceCode></produceCode>'\
+      '<batchCode></batchCode>'\
+      '<extendProps>'\
+      '<key1></key1>'\
+      '<key2></key2>'\
+      '</extendProps>'\
+   '</orderLine>'\
+ '</orderLines>'\
+'</request>'\
+
+"""
+url = base_url + path
+results=requests.post(url=url,data=data.encode("utf-8"))
+print(results.text)
