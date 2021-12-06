@@ -1,0 +1,70 @@
+# python
+python 学习
+# 打开文件模式
+
+# r        以只读方式打开文件。文件的指针将会放在文件的开头。这是默认模式。
+# rb   以二进制格式打开一个文件用于只读。文件指针将会放在文件的开头。
+# r+   打开一个文件用于读写。文件指针将会放在文件的开头。
+# rb+  以二进制格式打开一个文件用于读写。文件指针将会放在文件的开头。
+# w        打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+# wb   以二进制格式打开一个文件只用于写入。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+# w+   打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+# wb+  以二进制格式打开一个文件用于读写。如果该文件已存在则打开文件，并从开头开始编辑，即原有内容会被删除。如果该文件不存在，创建新文件。
+# a        打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。
+# ab   以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。也就是说，新的内容将会被写入到已有内容之后。如果该文件不存在，创建新文件进行写入。
+# a+   打开一个文件用于读写。如果该文件已存在，文件指针将会放在文件的结尾。文件打开时会是追加模式。如果该文件不存在，创建新文件用于读写。
+# ab+  以二进制格式打开一个文件用于追加。如果该文件已存在，文件指针将会放在文件的结尾。如果该文件不存在，创建新文件用于读写。
+
+import os
+
+"""
+    读文件
+    
+    参数说明: file_path   文件路径
+             file_name   文件名
+             mode  文件打开模式
+             
+    返回值说明：正常情况下，返回文件读取内容；异常情况下返回None,并打印出异常信息
+"""
+def read_file(file_path, file_name, mode):
+    global f
+    try:
+        # 打开一个文件
+        path = os.path.join(file_path, file_name)
+        f = open(path, mode)
+        file_content = f.read()
+        return file_content
+    except Exception as e:
+        print(e)
+        return None
+    finally:
+        # 关闭打开的文件
+        f.close()
+
+print(read_file('D:/','wenjian.txt','r'))
+
+"""
+    写文件
+    
+    参数说明: file_path   文件路径
+             file_name   文件名
+             mode  文件打开模式
+
+    返回值说明：正常情况下，返回写入文件的长度；异常情况下返回-1,并打印出异常信息
+"""
+def write_file(file_path, file_name, mode, content):
+    global f
+    try:
+        # 打开一个文件
+        path = os.path.join(file_path, file_name)
+        f = open(path, mode)
+        success = f.write(content)
+        return success
+    except Exception as e:
+        print(e)
+        return -1
+    finally:
+        # 关闭打开的文件
+        f.close()
+
+print(write_file('D:/', 'wenjian.txt', 'w','想想'))#输入content，直接替换原有文件内容
