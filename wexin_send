@@ -1,0 +1,29 @@
+# python
+python 学习
+# zhangxiaowen
+import times
+import  pyautogui as pg
+import pyperclip as pc
+
+
+def send_msg():
+    # 操作间隔为1秒，'ctrl+alt+w'是唤起pc微信的热键，‘ctrl+f’是定位到搜索框的热键
+    pg.PAUSE = 1.5
+    pg.hotkey('ctrl', 'alt', 'w')
+    pg.hotkey('ctrl', 'f')
+
+    # 搜索Adele baby（前一个步骤已经定位到搜索框）
+    pc.copy('海哥')
+    pg.hotkey('ctrl', 'v')
+    pg.press('enter')
+
+    # 发送消息
+    pc.copy('我在做测试')
+    pg.hotkey('ctrl', 'v')
+    pg.press('enter')
+
+    # 隐藏微信
+    times.sleep(1)
+    pg.hotkey('ctrl', 'alt', 'w')
+
+send_msg()
