@@ -1,0 +1,41 @@
+# python
+python 学习
+# zhangxiaowen
+print("商家入口为1\n客户入口为2")
+opreta=input("请输入你的角色:")
+opreta=int(opreta)
+
+if opreta==1:
+    print("------商家入口--------")
+
+    f=open("item_list",'r',encoding='utf-8')
+    dict_temp = {}
+    for line in f.readlines():
+        line=line.strip()
+        k=line.split(',')[0]
+        v=line.split(',')[1]
+        dict_temp[k]=v
+    f.close()
+    print(dict_temp)
+
+    name = input("请输入商品：")
+    include=False
+    for i in dict_temp:
+        if name==i:
+            price=input("请输入你要修改的价格：")
+            price=int(price)
+            dict_temp[i]=price
+            include=True
+
+    if not include:
+        price=input("请输入新增商品的价格：")
+        price=int(price)
+        dict_temp[name]=price
+
+    print(dict_temp)
+
+    f = open("item_list2", 'w', encoding='utf-8')
+    for k,v in dict_temp.items():
+        f.write(str(k)+','+str(v)+',\n')
+
+    f.close()
